@@ -1,0 +1,90 @@
+.todo {
+    width: 300px;
+    background-color: aliceblue;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px 5px;
+}
+
+h2 {
+    font-size: 30px;
+    font-style: 'Poppins', sans-serif;
+    ;
+}
+
+.input-style {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #555;
+    outline: none;
+    margin-bottom: 10px;
+    width: 250px;
+    height: 40px;
+}
+
+.input-style:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.button {
+    font-size: 16px;
+    padding: 0.5em 105px;
+    border: transparent;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    background: dodgerblue;
+    color: white;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(30, 144, 255, 1) 0%, rgba(0, 212, 255, 1) 100%);
+}
+
+.button:active {
+    transform: translate(0em, 0.1em);
+}
+
+.buttontwo {
+    font-size: 14px;
+    padding: 0.5em 45px;
+    border: transparent;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    background: #FF342B;
+    color: white;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.buttontwo:hover {
+    background: #FF342B
+}
+
+.buttontwo:active {
+    transform: translate(0em, 0.1em);
+}
+
+.tomain {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0px;
+}
+
+
+
