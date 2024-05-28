@@ -1,7 +1,7 @@
 # Todo App
 
-By Creating this App I understand : 
-• how to Handle input field
-• how to pass input field data into an array
-• how to pass props in to child 
-• how to delete data
+By Creating this App I understand : <br>
+• how to Handle input field <br>
+• how to pass input field data into an array  <br>
+• how to pass props in to child  <br>
+• how to delete data  <br>
