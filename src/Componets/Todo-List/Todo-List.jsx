@@ -7,8 +7,14 @@ import "./Todo-List.css";
 import { TiTick } from "react-icons/ti";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-const TodoList = ({ data, setdata ,setUsertext , setUpdate , setEdit}) => {
-  
+const TodoList = ({
+  data,
+  setdata,
+  setUsertext,
+  setUpdate,
+  setEdit,
+  handleDelAll,
+}) => {
   const handleDel = (item) => {
     const updateFilter = data.filter((filterItem) => item != filterItem.id);
     setdata(updateFilter);
@@ -24,44 +30,47 @@ const TodoList = ({ data, setdata ,setUsertext , setUpdate , setEdit}) => {
     );
   };
 
-  const handleEdit = (id)=>{
-    
-    const findItem = data.find((item)=>{
+  const handleEdit = (id) => {
+    const findItem = data.find((item) => {
       return id === item.id;
     });
-    setUsertext(findItem.title)
-    setUpdate(false)
-    setEdit(id)
-  }
+    setUsertext(findItem.title);
+    setUpdate(false);
+    setEdit(id);
+  };
 
   return (
     <>
       <div className="tomaintwo">
         {data.map(function (item, id) {
           return (
-            <div className="error" key={item.id}>
-              <div className="error__icon">
-                <div className="checkbox-wrapper">
-                  <label
-                    className="check-box"
-                    onClick={() => handleTick(item.id)}
-                  >
-                    {item.complete ? <TiTick /> : ""}
-                  </label>
+            <>
+              <div className="error" key={item.id}>
+                <div className="error__icon">
+                  <div className="checkbox-wrapper">
+                    <label
+                      className="check-box"
+                      onClick={() => handleTick(item.id)}
+                    >
+                      {item.complete ? <TiTick /> : ""}
+                    </label>
+                  </div>
+                </div>
+                <div className="error__title">{item.title}</div>
+                {item.complete ? <div className="line"></div> : ""}
+
+                <div className="edit">
+                  <FaEdit onClick={() => handleEdit(item.id)} />
+                </div>
+                <div className="error__close">
+                  <MdDelete onClick={() => handleDel(item.id)} />
                 </div>
               </div>
-              <div className="error__title">{item.title}</div>
-              {item.complete ? <div className="line"></div> : ""}
-
-              <div className="edit" >
-                <FaEdit onClick={() => handleEdit(item.id)}/>
-              </div>
-              <div className="error__close">
-                <MdDelete onClick={() => handleDel(item.id)} />
-              </div>
-            </div>
+              
+            </>
           );
         })}
+        
       </div>
     </>
   );

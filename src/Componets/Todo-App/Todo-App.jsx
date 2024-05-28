@@ -1,22 +1,31 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Todo-App.css";
 import TodoList from "../Todo-List/Todo-List";
 import { v4 as uuidv4 } from "uuid";
+import { Todocontext } from "../../Todocontext/TodoProvider";
 const TodoApp = () => {
+  const {
+    Usertext,
+    setUsertext,
+    Update,
+    setUpdate,
+    Edit,
+    setEdit,
+    data,
+    setdata,
+  } = useContext(Todocontext);
+
   // userSighup State
-  const [Usertext, setUsertext] = useState("");
-  const [Update, setUpdate] = useState(true);
+
   const FormHandler = (e) => {
     setUsertext(e.target.value);
   };
 
   const AllText = { id: uuidv4(), title: Usertext, complete: false };
-  const [Edit, setEdit] = useState(null);
 
   // Submit Fuction
-  const [data, setdata] = useState([]);
   const Submit = () => {
     if (!Update) {
       setdata(
@@ -27,7 +36,7 @@ const TodoApp = () => {
           return newElem;
         })
       );
-      setUpdate(true)
+      setUpdate(true);
       setUsertext("");
     } else {
       if (Usertext === "") {
@@ -44,9 +53,6 @@ const TodoApp = () => {
     setdata([]);
   };
 
-  // const UpdateButton = ()=>{
-  //   setUpdate(!false)
-  // }
   return (
     <>
       <div className="todo">

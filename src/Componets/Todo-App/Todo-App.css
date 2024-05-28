@@ -44,6 +44,10 @@ h2 {
     margin-bottom: 10px;
     font-weight: 500;
     cursor: pointer;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button:hover {
