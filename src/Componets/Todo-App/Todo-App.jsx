@@ -7,29 +7,46 @@ import { v4 as uuidv4 } from "uuid";
 const TodoApp = () => {
   // userSighup State
   const [Usertext, setUsertext] = useState("");
+  const [Update, setUpdate] = useState(true);
   const FormHandler = (e) => {
     setUsertext(e.target.value);
   };
 
+  const AllText = { id: uuidv4(), title: Usertext, complete: false };
+  const [Edit, setEdit] = useState(null);
+
   // Submit Fuction
   const [data, setdata] = useState([]);
-
-  const AllText = { id: uuidv4(), title: Usertext , complete : false };
-
   const Submit = () => {
-    if (Usertext === "") {
-      alert("empty");
-    } else if (data === data) {
-      setdata([...data, AllText]);
+    if (!Update) {
+      setdata(
+        data.map((newElem) => {
+          if (newElem.id === Edit) {
+            return { ...newElem, title: Usertext };
+          }
+          return newElem;
+        })
+      );
+      setUpdate(true)
       setUsertext("");
-      console.log(data);
+    } else {
+      if (Usertext === "") {
+        alert("empty");
+      } else if (data === data) {
+        setdata([...data, AllText]);
+        setUsertext("");
+      }
     }
   };
 
   // delete all function
-  const handleDelAll = (item)=>{
-    setdata([])
-  }
+  const handleDelAll = (item) => {
+    setdata([]);
+  };
+
+  // const UpdateButton = ()=>{
+  //   setUpdate(!false)
+  // }
   return (
     <>
       <div className="todo">
@@ -42,13 +59,21 @@ const TodoApp = () => {
           type="text"
           onChange={FormHandler}
         />
-        <button className="button" onClick={Submit}>
-          Add
+        <button className="button" onClick={() => Submit()}>
+          {Update === true ? "Add" : "Update"}
         </button>
         {/* data={data}  */}
         <div className="tomain">
-          <TodoList data={data} setdata={setdata} />
-          <button className="buttontwo" onClick={handleDelAll}>Remove All</button>
+          <TodoList
+            data={data}
+            setdata={setdata}
+            setUsertext={setUsertext}
+            setUpdate={setUpdate}
+            setEdit={setEdit}
+          />
+          <button className="buttontwo" onClick={handleDelAll}>
+            Remove All
+          </button>
         </div>
       </div>
     </>

@@ -7,11 +7,8 @@ import "./Todo-List.css";
 import { TiTick } from "react-icons/ti";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-const TodoList = ({ data, setdata }) => {
-  // const [tick, settick] = useState(true);
-  // const completeTask = () => {
-  //   settick((item) => !item);
-  // };
+const TodoList = ({ data, setdata ,setUsertext , setUpdate , setEdit}) => {
+  
   const handleDel = (item) => {
     const updateFilter = data.filter((filterItem) => item != filterItem.id);
     setdata(updateFilter);
@@ -26,6 +23,16 @@ const TodoList = ({ data, setdata }) => {
       })
     );
   };
+
+  const handleEdit = (id)=>{
+    
+    const findItem = data.find((item)=>{
+      return id === item.id;
+    });
+    setUsertext(findItem.title)
+    setUpdate(false)
+    setEdit(id)
+  }
 
   return (
     <>
@@ -46,8 +53,8 @@ const TodoList = ({ data, setdata }) => {
               <div className="error__title">{item.title}</div>
               {item.complete ? <div className="line"></div> : ""}
 
-              <div className="edit">
-                <FaEdit />
+              <div className="edit" >
+                <FaEdit onClick={() => handleEdit(item.id)}/>
               </div>
               <div className="error__close">
                 <MdDelete onClick={() => handleDel(item.id)} />
